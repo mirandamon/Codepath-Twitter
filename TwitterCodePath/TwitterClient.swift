@@ -10,6 +10,7 @@ import UIKit
 import BDBOAuth1Manager
 
 class TwitterClient: BDBOAuth1SessionManager {
+    
     static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com")!, consumerKey: "y0MEbZ1StzbHbHs5ALMEgpy1H", consumerSecret: "tnfrewpVhxrp80KHOyPvsmHuP9uFQ9kHIm7GfIKxFx6uTH1hkJ")
     
     var loginSuccess: (() -> ())?
@@ -27,6 +28,13 @@ class TwitterClient: BDBOAuth1SessionManager {
                 print("error: \(error.localizedDescription)")
                 self.loginFailure?(error)
         }
+    }
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(User.userDidLogoutNotification, object: nil)
     }
     
     func handleOpenUrl(url: NSURL) {
