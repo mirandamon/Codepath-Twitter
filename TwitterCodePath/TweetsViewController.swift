@@ -8,12 +8,15 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tweets: [Tweet]!
 
+    @IBOutlet weak var tweetsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tweetsTableView.dataSource = self
+        tweetsTableView.delegate = self
         TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
             for tweet in tweets {
@@ -23,6 +26,15 @@ class TweetsViewController: UIViewController {
                 print(error.localizedDescription)
         })
         // Do any additional setup after loading the view.
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
+        return cell
     }
 
     override func didReceiveMemoryWarning() {
