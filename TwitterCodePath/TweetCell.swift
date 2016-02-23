@@ -9,12 +9,17 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
+    
+    var isFavorited = false
+    var isRetweeted = false
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var retweetLabel: UILabel!
+    @IBOutlet weak var faveLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +38,8 @@ class TweetCell: UITableViewCell {
             profileImageView.setImageWithURL(individualTweet.user!.profileUrl!)
             nameLabel.text = "\(individualTweet.user!.name!)"
             timeLabel.text = individualTweet.timeSince
+            retweetLabel.text = String(individualTweet.retweetCount)
+            faveLabel.text = String(individualTweet.favoritesCount)
         }
     }
 
@@ -42,4 +49,15 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onRetweet(sender: AnyObject) {
+        if !isRetweeted {
+            isRetweeted = true
+            retweetLabel.text = String(individualTweet.retweetCount + 1)
+        }
+        else {
+            isRetweeted = false
+            retweetLabel.text = String(individualTweet.retweetCount)
+        }
+        
+    }
 }

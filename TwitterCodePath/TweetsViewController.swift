@@ -43,7 +43,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
-        cell.individualTweet = tweets![indexPath.row]
+        cell.individualTweet = tweets[indexPath.row]
         return cell
     }
 
