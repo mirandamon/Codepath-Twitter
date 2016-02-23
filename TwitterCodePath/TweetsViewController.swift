@@ -17,12 +17,18 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         tweetsTableView.dataSource = self
         tweetsTableView.delegate = self
+        tweetsTableView.rowHeight = UITableViewAutomaticDimension
+        tweetsTableView.estimatedRowHeight = 120
+        
         TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tweetsTableView.reloadData()
             }, failure: { (error: NSError) -> () in
                 print(error.localizedDescription)
         })
+        navigationController!.navigationBar.barTintColor = UIColor.blueColor()
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+
         // Do any additional setup after loading the view.
     }
     

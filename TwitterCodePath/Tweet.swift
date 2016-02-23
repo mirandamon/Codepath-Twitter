@@ -17,6 +17,7 @@ class Tweet: NSObject {
     var favoritesCount: Int = 0
     var createdDate: NSDate?
     var timePassed: Int?
+    var timeSince: String?
     
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
@@ -33,6 +34,19 @@ class Tweet: NSObject {
             let current = NSDate()
             let past = timestamp
             timePassed = Int(current.timeIntervalSinceDate(past!))
+            
+            if timePassed >= 86400 {
+                timeSince = String(timePassed! / 86400)+"d"
+            }
+            if (3600..<86400).contains(timePassed!) {
+                timeSince = String(timePassed!/3600)+"h"
+            }
+            if (60..<3600).contains(timePassed!) {
+                timeSince = String(timePassed!/60)+"m"
+            }
+            if timePassed < 60 {
+                timeSince = String(timePassed!)+"s"
+            }
         }
     }
     

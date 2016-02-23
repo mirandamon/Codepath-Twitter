@@ -14,10 +14,12 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        profileImageView.layer.cornerRadius = 5
+        profileImageView.layer.cornerRadius = 7
+        profileImageView.clipsToBounds = true
         tweetLabel.sizeToFit()
 
 
@@ -30,6 +32,7 @@ class TweetCell: UITableViewCell {
             tweetLabel.sizeToFit()
             profileImageView.setImageWithURL(individualTweet.user!.profileUrl!)
             nameLabel.text = "\(individualTweet.user!.name!)"
+            timeLabel.text = individualTweet.timeSince
         }
     }
 
