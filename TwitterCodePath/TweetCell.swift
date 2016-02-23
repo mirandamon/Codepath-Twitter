@@ -49,6 +49,17 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onFave(sender: AnyObject) {
+        if !isFavorited {
+            isFavorited = true
+            faveLabel.text = String(individualTweet.favoritesCount + 1)
+        }
+        else {
+            isFavorited = false
+            faveLabel.text = String(individualTweet.favoritesCount)
+        }
+    }
+    
     @IBAction func onRetweet(sender: AnyObject) {
         if !isRetweeted {
             isRetweeted = true

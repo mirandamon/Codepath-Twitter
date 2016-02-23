@@ -96,6 +96,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khm-13-Hhl">
                                                     <rect key="frame" x="188" y="96" width="16" height="17"/>
                                                     <state key="normal" title="Button" image="fave"/>
+                                                    <connections>
+                                                        <action selector="onFave:" destination="bac-0Y-4fj" eventType="touchUpInside" id="Tm1-nW-ijE"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGD-Ln-hNk">
                                                     <rect key="frame" x="80" y="96" width="16" height="17"/>
