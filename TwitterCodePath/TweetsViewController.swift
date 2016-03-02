@@ -26,7 +26,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             }, failure: { (error: NSError) -> () in
                 print(error.localizedDescription)
         })
-        navigationController!.navigationBar.barTintColor = UIColor.blueColor()
+        navigationController!.navigationBar.barTintColor = UIColor.cyanColor()
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
 
         // Do any additional setup after loading the view.
